@@ -89,7 +89,7 @@ void answer() {
     cin >> vec[i];
    }
    sort(vec.begin(), vec.end());
-   ll total = accumulate(vec.begin(), vec.end(), 0);
+   ll total = accumulate(vec.begin(), vec.end(), 0LL);
    ll sum = 0;
    rep(i, 0, m) {
     if (sum + vec[i] == total - sum - vec[i]) {
