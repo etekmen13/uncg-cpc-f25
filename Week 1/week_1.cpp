@@ -174,19 +174,61 @@ void two_pointer_at_most_k_distinct() {
 }
 #pragma endregion
 
+#pragma StableSortVsCustomComparator
+void sort_custom() {
+    vector<pair<string, string>> names {
+        {"Emre", "Tekmen"},
+        {"Sasha", "Steffey"},
+        {"Yeraldine", "Tamayo"},
+        {"John", "Smith"},
+        {"Eric", "Smith"},
+        {"Kendrick", "Lamar"},
+        {"George", "Washington"},
+        {"Denzel", "Washington"}
+    };
+    auto comp = [](auto& a, auto& b) { if (a.second != b.second) return a.second < b.second; return a.first < b.first;};
 
+    cout << names << endl;
+    sort(names.begin(), names.end(), comp);
+    cout << names << endl;
+}
+void sort_stable() {
+    vector<pair<string, string>> names {
+        {"Emre", "Tekmen"},
+        {"Sasha", "Steffey"},
+        {"Yeraldine", "Tamayo"},
+        {"John", "Smith"},
+        {"Eric", "Smith"},
+        {"Kendrick", "Lamar"},
+        {"George", "Washington"},
+        {"Denzel", "Washington"}
+    };
+    cout << names << endl;
+    stable_sort(names.begin(), names.end(), [](auto& a, auto& b){ return a.first < b.first; });
+    stable_sort(names.begin(), names.end(), [](auto& a, auto& b){ return a.second  < b.second;  });
+    cout << names << endl;
+}
+#pragma endregion
 int main() {
     ios::sync_with_stdio(false); // removes runtime checks to ensure consistency with legacy C `printf` and `scanf` functions. You then must only use cin and cout.
     cin.tie(nullptr); // unties cin and cout. Instead of printing answers as inputs come in, the program now reads in all inputs, then prints all outputs.
     
+    sort_custom();
+    
+    // sort_stable();
+    
     //prefix_sum();
+
+    //two_pointer_under_budget();
+
+    //two_pointer_at_most_k_distinct();
 
     // sliding_window_max_queue();
 
     //sliding_window_monotonic_deque();
 
-    //two_pointer_under_budget();
 
-    two_pointer_at_most_k_distinct();
+
+
     return 0;
 }

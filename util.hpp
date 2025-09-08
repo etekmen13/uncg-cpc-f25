@@ -9,3 +9,9 @@ ostream& operator <<(ostream& o, const vector<T>& vec) {
     o << endl;
     return o;
 }
+template<class T, class K>
+ostream& operator <<(ostream& o, const pair<T, K>& vec) {
+    o << vec.first << " " << vec.second << " ";
+    o << endl;
+    return o;
+}

@@ -23,6 +23,7 @@
         "latch": "cpp",
         "limits": "cpp",
         "semaphore": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "ostream": "cpp"
     }
 }
