@@ -213,7 +213,7 @@ int main() {
     ios::sync_with_stdio(false); // removes runtime checks to ensure consistency with legacy C `printf` and `scanf` functions. You then must only use cin and cout.
     cin.tie(nullptr); // unties cin and cout. Instead of printing answers as inputs come in, the program now reads in all inputs, then prints all outputs.
     
-    sort_custom();
+    //sort_custom();
     
     // sort_stable();
     
@@ -223,7 +223,7 @@ int main() {
 
     //two_pointer_at_most_k_distinct();
 
-    // sliding_window_max_queue();
+    //sliding_window_max_queue();
 
     //sliding_window_monotonic_deque();
 
