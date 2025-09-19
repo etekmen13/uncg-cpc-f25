@@ -226,26 +226,26 @@ void sort_stable() {
 }
 #pragma endregion
 int main() {
-  ios::sync_with_stdio(false); // removes runtime checks to ensure consistency
-                               // with legacy C `printf` and `scanf` functions.
-                               // You then must only use cin and cout.
-  cin.tie(nullptr); // unties cin and cout. Instead of printing answers as
-                    // inputs come in, the program now reads in all inputs, then
-                    // prints all outputs.
+    ios::sync_with_stdio(false); // removes runtime checks to ensure consistency with legacy C `printf` and `scanf` functions. You then must only use cin and cout.
+    cin.tie(nullptr); // unties cin and cout. Instead of printing answers as inputs come in, the program now reads in all inputs, then prints all outputs.
+    
+    //sort_custom();
+    
+    // sort_stable();
+    
+    //prefix_sum();
 
-  // sort_custom();
+    //two_pointer_under_budget();
 
-  // sort_stable();
+    //two_pointer_at_most_k_distinct();
 
-  // prefix_sum();
-
-  // two_pointer_under_budget();
-
-  // two_pointer_at_most_k_distinct();
-
+    //sliding_window_max_queue();
   // sliding_window_max_queue();
 
-  // sliding_window_monotonic_deque();
+    //sliding_window_monotonic_deque();
+
+
+
 
   return 0;
 }

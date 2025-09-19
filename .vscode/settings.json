@@ -24,6 +24,8 @@
         "limits": "cpp",
         "semaphore": "cpp",
         "algorithm": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "cmath": "cpp",
+        "tuple": "cpp"
     }
 }
