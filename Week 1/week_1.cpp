@@ -233,9 +233,9 @@ int main() {
                     // inputs come in, the program now reads in all inputs, then
                     // prints all outputs.
 
-  sort_custom();
+  // sort_custom();
 
-  sort_stable();
+  // sort_stable();
 
   // prefix_sum();
 
