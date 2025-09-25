@@ -127,11 +127,11 @@ void answer() {
     
                 if(disc[v] == -1){
                     parent[v] = u;
-                    st.push_back({v, 0});          
+                    st.push_back({v, 0});     // push to stack      
                 } else if(v != parent[u]){
                     low[u] = min(low[u], disc[v]); // back edge
                 }
-                continue; 
+                continue; // "recurse"
             }
     
             st.pop_back();
