@@ -1,4 +1,5 @@
 #!/bin/bash
+
 file="main.cpp"
 output=$(echo "$file" | sed "s/\..*//")
 ARGS=" $* "
@@ -16,6 +17,7 @@ for in_file in tests/*.in; do
     out_file=$(echo "$name".ans)
     tmp=$(mktemp)
     ./$output < "$in_file" > "$tmp"
+    
     if diff --report-identical-files --side-by-side "$tmp" "$out_file" > /dev/null; then
         echo "OK"
     else

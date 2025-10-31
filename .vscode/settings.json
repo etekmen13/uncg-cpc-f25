@@ -27,5 +27,6 @@
         "ostream": "cpp",
         "cmath": "cpp",
         "tuple": "cpp"
-    }
+    },
+    "C_Cpp.default.compilerPath": "/usr/bin/g++"
 }

@@ -216,7 +216,7 @@ void answer() {
 
     // Euler Tour allows for ancestor checks in O(1).
     // For a node a, all subnodes b of a will be entered AFTER entering a (tin[a] <= tin[b]) (we consider a to the 0th ancestor of itself.)
-    // and all subnodes b of a well be exited BEFORE exiting a. (we consider a to be a subnode of itself).
+    // and all subnodes b of a will be exited BEFORE exiting a. (we consider a to be a subnode of itself).
     auto is_ancestor = [&tin, &tout](ll a, ll b){ return tin[a] <= tin[b] && tout[b] <= tout[a];};
 
     // LCA: Lowest Common Ancestor.
