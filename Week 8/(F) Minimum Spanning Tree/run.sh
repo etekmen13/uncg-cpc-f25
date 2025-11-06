@@ -5,7 +5,7 @@ output=$(echo "$file" | sed "s/\..*//")
 ARGS=" $* "
 
 # g++ -g -O2 -o "$output" -std=gnu++23 -static -lrt -Wl,--whole-archive -lpthread -Wl,--no-whole-archive "$file"
-g++ -o "$output" "$file" -std=gnu++20 -fsanitize=address -Wall
+g++ -o "$output" "$file" -std=gnu++20 -Wall -fsanitize=address
 
 for in_file in tests/*.in; do
     if [[ "$ARGS" == *" --debug "* ]]; then

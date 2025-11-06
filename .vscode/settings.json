@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.ftlh": "html",
         "array": "cpp",
         "deque": "cpp",
         "forward_list": "cpp",
@@ -26,7 +27,8 @@
         "algorithm": "cpp",
         "ostream": "cpp",
         "cmath": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "format": "cpp"
     },
     "C_Cpp.default.compilerPath": "/usr/bin/g++"
 }
