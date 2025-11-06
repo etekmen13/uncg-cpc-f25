@@ -52,8 +52,8 @@ T bin_apply_func(T obj, Func func, ll n) {
   return result;
 }
 template <class T>
-ostream &operator<<(ostream &o, const vector<T> &vec) {
-  for (const auto &e : vec) {
+ostream& operator<<(ostream& o, const vector<T>& vec) {
+  for (const auto& e : vec) {
     o << e << " ";
   }
   o << endl;
@@ -61,76 +61,47 @@ ostream &operator<<(ostream &o, const vector<T> &vec) {
 }
 
 #pragma endregion
-
 struct Edge {
-  int u, v, w;
-};
-struct DSU {
-  vector<int> repr, rank;
-  DSU(int _n) : repr(_n), rank(_n, 0) { iota(repr.begin(), repr.end(), 0); };
-  bool unite(int a, int b) {
-    a = find(a);
-    b = find(b);
-    if (a == b) return false;
-    if (rank[a] < rank[b]) swap(a, b);
-    repr[b] = a;
-    if (rank[a] == rank[b]) ++rank[a];
-    return true;
-  }
-  int find(int v) {
-    if (v == repr[v]) return v;
+  int to;
+  float w;
 
-    return repr[v] = find(repr[v]);
-  }
+  friend bool operator<(const Edge& a, const Edge& b) { return a.w > b.w; }
 };
-void solve(bool &go) {
+bool solve() {
   int N, M;
   cin >> N >> M;
-  if (N == 0 && M == 0) {
-    go = false;
-    return;
-  }
-
-  vector<Edge> edges;
-  edges.reserve(M);
-  DSU dsu(N);
+  if (N == 0 && M == 0) return false;
+  vector<vector<Edge>> adj(N);
   rep(i, 0, M) {
-    int u, v, w;
+    int u, v;
+    float w;
     cin >> u >> v >> w;
-    edges.push_back({u, v, w});
+    adj[u].push_back({v, w});
+    adj[v].push_back({u, w});
   }
+  vector<double> best(N, 0.0);
+  vector<int> parent(N, -1);
+  best[0] = 1.0;
+  using P = pair<double, int>;
+  priority_queue<P> pq;
+  pq.push({1.0, 0});
 
-  sort(edges.begin(), edges.end(), [](Edge a, Edge b) { return a.w < b.w; });
+  while (!pq.empty()) {
+    auto [val, u] = pq.top();
+    pq.pop();
 
-  vector<Edge> MST;
-  MST.reserve(N - 1);
-  ll cost = 0LL;
-  for (const auto &x : edges) {
-    if (dsu.unite(x.u, x.v)) {
-      MST.push_back(x);
-      cost += x.w;
-      if ((int)MST.size() == N - 1) break;
+    for (const auto& [v, w] : adj[u]) {
+      auto cand = val * w;
+      if (cand > best[v]) {
+        best[v] = cand;
+        parent[v] = u;
+        pq.push({cand, v});
+      }
     }
   }
-  if (N > 0 && (int)MST.size() != N - 1) {
-    cout << "Impossible\n";
-    return;
-  }
-  cout << cost << "\n";
-  sort(MST.begin(), MST.end(), [](const Edge &x, const Edge &y) {
-    int xu = x.u, xv = x.v;
-    int yu = y.u, yv = y.v;
-    if (xv < xu) swap(xv, xu);
-    if (yv < yu) swap(yv, yu);
-    return (xu == yu) ? (xv < yv) : (xu < yu);
-  });
-
-  for (const auto &e : MST) {
-    int a = e.u, b = e.v;
-    if (b < a) swap(a, b);
-
-    cout << a << " " << b << "\n";
-  }
+  cout << fixed << setprecision(4);
+  cout << best[N-1] << "\n";
+  return true;
 }
 int main() {
   ios::sync_with_stdio(false);
@@ -139,9 +110,7 @@ int main() {
   int T = 1;
   // OPTIONAL FOR SOME CONTESTS
   // cin >> T;
-  bool go = true;
-  while (go) {
-    solve(go);
+  while (solve()) {
   }
   return 0;
 }
